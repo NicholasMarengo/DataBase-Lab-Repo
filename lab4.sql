@@ -234,7 +234,27 @@ where pid = 'p01'
 or pid = 'p07'
 
 --5--
+select pid
+from orders
+where orders.cid NOT in (
+			select cid
+			from orders
+			where aid = 'a05');
 
+--6--
+select name, discount, city
+from customers
+where customers.cid in (
+			select cid
+			from orders
+			where orders.aid in ( 
+						select aid
+						from agents
+						where city = 'Dallas'
+						or city = 'New York'));
+
+
+--7--
 
 
 
