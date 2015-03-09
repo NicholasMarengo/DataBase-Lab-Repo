@@ -255,9 +255,25 @@ where customers.cid in (
 
 
 --7--
+select name
+from customers
+where customers.discount in (
+				select discount
+				from customers
+				where city = 'Dallas'
+				or city = 'London')
 
 
+--8--
+Check constraints are the database's way to describe limitations on what the data can be. They are good because they can organize data properly and make it easier to read and analyze.
+They are advantageous because it is easier to support tables and their data with check constraints. An example of a good use of check constraints include finding a certain product that is above or below
+a certain price range. For example, 
+					select *
+					from products
+					where priceUSD <500
 
+			This makes the job of the analyst or database engineer's much easier.
+ 
 
 
 
