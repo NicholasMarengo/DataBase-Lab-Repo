@@ -216,8 +216,12 @@ where priceUSD < (select AVG(priceUSD)
 		from products)
 order by name ASC
 
---3--
 
+--3--
+select dollars, name, pid
+from orders, customers
+where orders.cid = customers.cid
+order by dollars DESC
 
 
 --4-- 
@@ -227,16 +231,19 @@ where customers.cid = orders.cid
 group by name order by name ASC
 
 
-
-
-
 --5--
-select name
-from customers
-where customers.cid = orders.cid
+select customers.name, products.name, agents.name
+from customers, products, orders, agents
+where customers.cid = orders. cid
+and products.pid = orders.pid
+and agents.city = 'Tokyo'
 
-
-
+--6--
+select qty * priceUSD * (discount *.1), dollars, ordno
+from orders, products, customers
+where orders.pid = products.pid
+and orders.cid = customers.cid
+order by ordno ASC
 
 
 
