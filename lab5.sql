@@ -204,6 +204,39 @@ inner join orders
 on orders.aid = agents.aid
 where cid = 'c006'
 
+--2--
+
+
+
+--3--
+select cid
+from orders
+where orders.cid NOT in (select name
+			from customers);
+
+--4--
+select name
+from orders
+LEFT OUTER JOIN customers as cus
+ON cus.name = cus.name
+
+--5--
+select *
+from customers
+inner join agents on agents.city = agents.city
+
+
+--6--
+select name, city
+from agents
+where city IN (select city
+		from customers)
+
+--7--
+select products.name, count(products.quantity)
+left join 
+
+
 
 
 
