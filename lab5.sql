@@ -205,8 +205,13 @@ on orders.aid = agents.aid
 where cid = 'c006'
 
 --2--
-
-
+select distinct ord1.pid
+from orders as ord1, orders as ord2, agents, customers
+where agents.aid = ord1.aid
+and ord2.cid = customers.cid
+and agents.aid = ord2.aid
+and customers.city = 'Kyoto'
+order by pid desc
 
 --3--
 select cid
@@ -233,9 +238,15 @@ where city IN (select city
 		from customers)
 
 --7--
-select products.name, count(products.quantity)
-left join 
-
+Select name, city
+from customers 
+where customers.city in( select city
+			from(select products.city, count(products.pid) as sum
+				from products
+				group by products.city
+				order by sum asc
+				limit 1)
+				as alias);
 
 
 
