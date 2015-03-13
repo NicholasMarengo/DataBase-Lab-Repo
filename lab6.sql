@@ -198,10 +198,16 @@ select *
 from orders;
 
 
---1-- --NOT DONE--
-select name, city
-from customers
-where city = 'Dallas'
+--1-- 
+Select name, city
+from customers 
+where customers.city in( select city
+			from(select products.city, count(products.pid) as sum
+				from products
+				group by products.city
+				order by sum dESC
+				limit 1)
+				as alias);
 
 --2--
 select name
@@ -211,6 +217,38 @@ where priceUSD < (select AVG(priceUSD)
 order by name ASC
 
 --3--
+
+
+
+--4-- 
+select name, sum(qty) as blahslah
+from customers, orders
+where customers.cid = orders.cid
+group by name order by name ASC
+
+
+
+
+
+--5--
+select name
+from customers
+where customers.cid = orders.cid
+
+
+
+
+
+
+
+
+
+
+
+
+--7--
+--The difference between a left outer join and a right outer join is that when a left outer join is used between A and B, it takes everything in A and then then the common rows in B. --
+--A right outer join would give us everything in B, and then the common rows in A.--
 
 
 
