@@ -43,7 +43,7 @@ INSERT INTO firstnf (packageid, tagnumber, installdate, softwarecostusd, softwar
 
 INSERT INTO firstnf (packageid, tagnumber, installdate, softwarecostusd, softwarepackagename, computermodel) VALUES ('WP08', 32808, '01-12-2006', 185.00, 'Star Wars: Battlefront', 'Lenovo');
 
-INSERT INTO firstnf (packageid, tagnumber, installdate, softwarecostusd, softwarepackagename, computermodel) VALUES ('WP08', 37691, '06-15-2005', 227.50, 'Star Wars: Battlefront', 'HP');
+INSERT INTO firstnf (packageid, tagnumber, installdate, softwarecostusd, softwarepackagename, computermodel) VALUES ('WP08', 37691, '06-15-2005', 227.50, 'Star Wars: Battlefront', 'IBM');
 
 INSERT INTO firstnf (packageid, tagnumber, installdate, softwarecostusd, softwarepackagename, computermodel) VALUES ('WP08', 57222, '05-27-2005', 170.24, 'Star Wars: Battlefront', 'Toshiba');
 
@@ -65,6 +65,9 @@ INSERT INTO firstnf (packageid, tagnumber, installdate, softwarecostusd, softwar
 --7--
 --put in third normal form--
 
+DELETE FROM thirdnfT1
+
+INSERT INTO thirdnfT1 (packageid, softwarepackagename) VALUES ('AC01', 'Star Wars: the Old Republic');
 
 
 
