@@ -29,8 +29,7 @@ INSERT INTO firstnf (packageid, tagnumber, installdate, softwarecostusd) VALUES 
 
 
 --3-- --answer this too --
-
-
+--there is a composite primary key of packageid and tagnumber--
 
 --4--
 
@@ -51,6 +50,41 @@ INSERT INTO firstnf (packageid, tagnumber, installdate, softwarecostusd, softwar
 INSERT INTO firstnf (packageid, tagnumber, installdate, softwarecostusd, softwarepackagename, computermodel) VALUES ('WP09', 59836, '10-30-2005', 35.00, 'Star Wars: Battlefront2', 'Acer');
 
 INSERT INTO firstnf (packageid, tagnumber, installdate, softwarecostusd, softwarepackagename, computermodel) VALUES ('WP09', 77740, '05-27-2005', 35.00, 'Star Wars: Battlefront2', 'Sony');
+
+--5-- functional dependencies yay--
+--the functional dependencies are the tagnumber to the computer model, and the packageid to the softwarepackagename. --
+
+
+
+
+
+--6-- Not in third normal form because it is still in first normal form from before.. All I did was add two more columns. Also there exists the same data value in different rows, which is why its still in first NF--
+
+
+
+--7--
+--put in third normal form--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
