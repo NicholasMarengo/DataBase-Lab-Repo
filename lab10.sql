@@ -85,6 +85,8 @@ language plpgsql;
 select get_courses_by_credits(0, 'results');
 Fetch all from results;
 
+--question 1--
+
 
 select *
 from courses
@@ -113,6 +115,23 @@ SELECT prereqsfor(499, 'results');
 FETCH ALL FROM results
 
 
+--question 2--
 
+CREATE OR REPLACE FUNCTION isprereqfor(INT, refcursor) RETURNS refcursor AS 
+$$
+DECLARE 
+	course_num INT :=$1;
+	resultset refcursor :=$2;
+BEGIN
+	open resultset FOR
+	select coursenum
+	FROM prerequisites
+	WHERE course_num = prereqnum;
 
+	return resultset;
+END 
+$$ 
+language plpgsql;
 
+SELECT isprereqfor(120, 'results');
+FETCH ALL FROM results;
