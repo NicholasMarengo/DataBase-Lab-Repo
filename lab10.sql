@@ -84,3 +84,35 @@ language plpgsql;
 
 select get_courses_by_credits(0, 'results');
 Fetch all from results;
+
+
+select *
+from courses
+
+select *
+from prerequisites
+
+create or replace function prereqsfor(INTEGER, refcursor) RETURNS refcursor as
+$$
+DECLARE
+	course_num INT :=$1;
+	resultset refcursor :=$2;
+BEGIN
+	open resultset FOR
+	SELECT prereqnum
+	FROM prerequisites
+	WHERE course_num = coursenum
+	ORDER BY prereqnum DESC
+	LIMIT 1;
+	RETURN resultset;
+END;
+$$
+LANGUAGE plpgsql;
+
+SELECT prereqsfor(499, 'results');
+FETCH ALL FROM results
+
+
+
+
+
